@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>New webpage</title>
+    </head>
+    <style>
+        nav {
+            position:fixed;
+            left:0px;
+            top:0px;
+            width:106px;
+            height:400px;
+            background:rgb(104, 173, 156);
+        }
+        
+        nav {
+            text-align:center;
+        }
+        
+        a{
+            text-decoration:none;
+        }
+        
+        #a {
+            position:absolute;
+            left:113px;
+        }
+        
+    </style>
+    <body>
+        
+        <form id="quiz-form">
+            <label>
+                <img id='croc-pic' src="https://ka-perseus-images.s3.amazonaws.com/325aab611b8b69b51bfeb16ade0af741da7dc3ff.jpg" alt="Reptile" width='302'> <br>
+                <select id="quiz-answer">
+                    <option value="crocodile">slide down</option>
+                    <option value="alligator">fade in</option>
+                    <!--<option value="caiman">fade out</option>-->
+                </select>
+            </label> <br>
+            <button type="submit">Check Answer</button>
+        </form>
+        
+        <form id="pic-form">
+            <label>
+                <select id="pic">
+                    <option value="jjk">jujutsu kaisen</option>
+                    <option value="bsd">bungou stray dogs</option>
+                    <option value="tr">tokyo revengers</option>
+                    <!--<option value="caiman">fade out</option>-->
+                </select>
+            </label> <br>
+            <button type="submit">Check Answer</button>
+        </form>
+        
+        <div id='a'></div>
+
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    
+        var jjk = ['https://upload.wikimedia.org/wikipedia/en/thumb/4/46/Jujutsu_kaisen.jpg/220px-Jujutsu_kaisen.jpg',
+'https://i.pinimg.com/236x/fb/4c/5f/fb4c5faaad64afd4d8af11a238cdfedd.jpg',
+'https://i.pinimg.com/236x/58/e7/cd/58e7cd0d48a5e4836b114a4dbfc181a6.jpg',
+'https://i.pinimg.com/236x/5c/1a/6e/5c1a6edec0946770007af4766cd73020.jpg',
+'https://i.pinimg.com/236x/83/27/8c/83278ccb4cce0fe848bd6ec3c860ac4c.jpg',
+'https://i.pinimg.com/236x/fd/59/d3/fd59d3adfbf574abfd0d9553b4e6ef13.jpg'];
+
+        var bsd = ['https://upload.wikimedia.org/wikipedia/en/thumb/f/f8/Bung%C5%8D_Stray_Dogs_volume_1.jpg/220px-Bung%C5%8D_Stray_Dogs_volume_1.jpg',
+'https://i.pinimg.com/236x/99/dc/34/99dc347335c95360cdbab0c9380e6669.jpg',
+'https://i.pinimg.com/236x/87/f9/85/87f98519b97f1a2acaf04d140e391421.jpg',
+'https://i.pinimg.com/564x/08/8f/cb/088fcb206a276bee686826d5b39b93a9.jpg',
+'https://i.pinimg.com/236x/e4/03/76/e4037615dec95e78e85b8047df4f9d6b.jpg',
+'https://i.pinimg.com/236x/52/3a/b3/523ab38d40514826169330c6cc417f0b.jpg'];
+
+        var tr = ['https://upload.wikimedia.org/wikipedia/en/thumb/b/b1/Tokyo_Revengers_volume_1_cover.jpg/220px-Tokyo_Revengers_volume_1_cover.jpg',
+'https://i.pinimg.com/236x/13/c5/14/13c514de03d09d62a0977412b4c695f4.jpg',
+'https://i.pinimg.com/236x/cf/76/4b/cf764b221d5c390fbf2766fe5dba2dd5.jpg',
+'https://i.pinimg.com/564x/52/71/e1/5271e19fc377368ce74b8372f303e790.jpg',
+'https://i.pinimg.com/564x/bc/7a/29/bc7a29311b0e44d4aaa1a0773d8af078.jpg',
+'https://i.pinimg.com/564x/1f/61/66/1f61661bff1789e913394691a5ded944.jpg'];
+        
+        var i = Math.floor(Math.random() * 6);
+
+    
+        $("#quiz-form").on("submit", function(event) {
+            event.preventDefault();
+            var $answer = $("#quiz-answer"); 
+            var answer = $answer.val();
+            console.log(answer);
+            if (answer === "crocodile") {
+                $("#croc-pic").hide();
+                $("#croc-pic").slideDown(1000);
+            }else if (answer === 'alligator'){
+                $("#croc-pic").hide();
+                $("#croc-pic").fadeIn(1000);
+            }/*else if (answer === 'caiman'){
+                //$("#croc-pic").hide();
+                $("#croc-pic").animate({left: '250px'});
+            }*/
+            
+        });
+        
+        $("#pic-form").on("submit", function(event) {
+            event.preventDefault();
+            var $answer = $("#pic"); 
+            var answer = $answer.val();
+            console.log(answer);
+            if (answer === "jjk") {
+                document.getElementById('croc-pic').src = jjk[i];
+            }else if (answer === 'tr'){ 
+                document.getElementById('croc-pic').src = tr[i];
+
+            }else if (answer === 'bsd'){
+                document.getElementById('croc-pic').src = bsd[i];
+            }
+            
+        });
+        document.getElementById('a').innerHTML = i;
+    </script>
+    
+</html>
